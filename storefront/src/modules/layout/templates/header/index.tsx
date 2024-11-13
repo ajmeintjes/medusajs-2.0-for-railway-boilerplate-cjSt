@@ -89,7 +89,7 @@ export default function Header() {
             <div className="hidden md:flex items-center space-x-6">
               <Popover className="relative">
                 {({ open }) => (
-                  <>
+                  <Fragment>
                     <Popover.Button className="text-[#172651] font-bold hover:text-[#cfae45] focus:outline-none">
                       Bars and Coins
                     </Popover.Button>
@@ -110,13 +110,13 @@ export default function Header() {
                         </div>
                       </Popover.Panel>
                     </Transition>
-                  </>
+                  </Fragment>
                 )}
               </Popover>
 
               <Popover className="relative">
                 {({ open }) => (
-                  <>
+                  <Fragment>
                     <Popover.Button className="text-[#172651] font-bold hover:text-[#cfae45] focus:outline-none">
                       Solutions
                     </Popover.Button>
@@ -137,7 +137,7 @@ export default function Header() {
                         </div>
                       </Popover.Panel>
                     </Transition>
-                  </>
+                  </Fragment>
                 )}
               </Popover>
 
