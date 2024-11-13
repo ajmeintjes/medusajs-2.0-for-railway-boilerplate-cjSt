@@ -1,10 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { TrendingUp, TrendingDown, Search, ShoppingCart, User, Menu } from "lucide-react"
+import { TrendingUp, TrendingDown, Search, ShoppingCart, User } from "lucide-react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
-import SideMenu from "@modules/layout/components/side-menu"
 import { Suspense } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import { Fragment } from "react"
@@ -79,14 +78,13 @@ export default function Header() {
         <nav className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
           <div className="content-container flex items-center justify-between h-full">
             <div className="flex items-center gap-x-6 h-full">
-              <SideMenu />
               <LocalizedClientLink href="/" className="text-xl font-bold text-[#172651]">
                 GOLD<span className="text-[#cfae45]">HOUSE</span>
               </LocalizedClientLink>
             </div>
 
             {/* Desktop Navigation Menu */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="flex items-center space-x-6">
               <Popover className="relative">
                 {({ open }) => (
                   <Fragment>
@@ -155,11 +153,9 @@ export default function Header() {
             </div>
 
             <div className="flex items-center gap-x-6">
-              {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
-                <Search className="w-5 h-5 text-[#172651]" />
-              )}
-              <User className="w-5 h-5 text-[#172651]" />
-              <Suspense fallback={<ShoppingCart className="w-5 h-5 text-[#172651]" />}>
+              <Search className="w-5 h-5 text-[#172651] hover:text-[#cfae45] cursor-pointer" />
+              <User className="w-5 h-5 text-[#172651] hover:text-[#cfae45] cursor-pointer" />
+              <Suspense>
                 <CartButton />
               </Suspense>
             </div>
