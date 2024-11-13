@@ -6,7 +6,8 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import { Suspense } from "react"
-import { listRegions } from "@lib/data/regions"
+import { Popover, Transition } from "@headlessui/react"
+import { Fragment } from "react"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(true)
@@ -81,6 +82,75 @@ export default function Header() {
               <SideMenu />
               <LocalizedClientLink href="/" className="text-xl font-bold text-[#172651]">
                 GOLD<span className="text-[#cfae45]">HOUSE</span>
+              </LocalizedClientLink>
+            </div>
+
+            {/* Desktop Navigation Menu */}
+            <div className="hidden md:flex items-center space-x-6">
+              <Popover className="relative">
+                {({ open }) => (
+                  <>
+                    <Popover.Button className="text-[#172651] font-bold hover:text-[#cfae45] focus:outline-none">
+                      Bars and Coins
+                    </Popover.Button>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 translate-y-1"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 translate-y-1"
+                    >
+                      <Popover.Panel className="absolute z-10 mt-3 w-screen max-w-md transform px-4">
+                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                          <div className="relative grid gap-6 bg-white p-6">
+                            {/* Add your menu items here */}
+                          </div>
+                        </div>
+                      </Popover.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Popover>
+
+              <Popover className="relative">
+                {({ open }) => (
+                  <>
+                    <Popover.Button className="text-[#172651] font-bold hover:text-[#cfae45] focus:outline-none">
+                      Solutions
+                    </Popover.Button>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 translate-y-1"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 translate-y-1"
+                    >
+                      <Popover.Panel className="absolute z-10 mt-3 w-screen max-w-md transform px-4">
+                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                          <div className="relative grid gap-6 bg-white p-6">
+                            {/* Add your menu items here */}
+                          </div>
+                        </div>
+                      </Popover.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Popover>
+
+              <LocalizedClientLink href="/charts" className="text-[#172651] font-bold hover:text-[#cfae45]">
+                Charts
+              </LocalizedClientLink>
+
+              <LocalizedClientLink href="/about" className="text-[#172651] font-bold hover:text-[#cfae45]">
+                About
+              </LocalizedClientLink>
+
+              <LocalizedClientLink href="/contact" className="text-[#172651] font-bold hover:text-[#cfae45]">
+                Contact
               </LocalizedClientLink>
             </div>
 
